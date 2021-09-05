@@ -41,11 +41,12 @@ class TinderBot():
         popup_2.click()
 
     def like(self):
-        like_btn = self.driver.find_element_by_xpath('//*[@id="q-2020625691"]/div/div[1]/div/main/div[1]/div/div/div[1]/div[1]/div/div[5]/div/div[4]/button')
+
+        like_btn = bot.driver.find_element_by_xpath('//*[@id="q-2020625691"]/div/div[1]/div/main/div[1]/div/div/div[1]/div[1]/div/div[5]/div/div[4]/button')
         like_btn.click()
 
     def dislike(self):
-        dislike_btn = self.driver.find_element_by_xpath('//*[@id="q-2020625691"]/div/div[1]/div/main/div[1]/div/div/div[1]/div[1]/div/div[4]/div/div[2]/button')
+        dislike_btn = bot.driver.find_element_by_xpath('//*[@id="q-2020625691"]/div/div[1]/div/main/div[1]/div/div/div[1]/div[1]/div/div[5]/div/div[2]/button')
         dislike_btn.click()
 
 
@@ -55,10 +56,11 @@ class TinderBot():
 
         
     def close_match(self):
-        pass
+        match_popup = bot.driver.find_element_by_xpath('//*[@id="q-1690254490"]/div/div/div[1]/div/div[4]/button')
+        match_popup.click()
 
     def auto_swipe(self):
-        time.sleep(5)
+        print("ready...")
         while True:
             time.sleep(0.5)
             try:
@@ -72,5 +74,3 @@ class TinderBot():
 
 bot = TinderBot()
 bot.login()
-bot.auto_swipe()
-
