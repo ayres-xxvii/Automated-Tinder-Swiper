@@ -1,7 +1,6 @@
 
 
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
@@ -33,19 +32,45 @@ class TinderBot():
         login_btn.click()
 
         self.driver.switch_to_window(base_window)
-        popup_1 = self.driver.find_element_by_id('//*[@id="q545960529"]/div/div/div/div/div[3]/button[1]')
+
+        time.sleep(8)
+
+        popup_1 = self.driver.find_element_by_xpath('//*[@id="q545960529"]/div/div/div/div/div[3]/button[1]')
         popup_1.click()
-        popup_2 = self.driver.find_element_by_id('//*[@id="q545960529"]/div/div/div/div/div[3]/button[1]')
+        popup_2 = self.driver.find_element_by_xpath('//*[@id="q545960529"]/div/div/div/div/div[3]/button[1]')
         popup_2.click()
 
     def like(self):
-        pass
-
+        like_btn = self.driver.find_element_by_xpath('//*[@id="q-2020625691"]/div/div[1]/div/main/div[1]/div/div/div[1]/div[1]/div/div[5]/div/div[4]/button')
+        like_btn.click()
 
     def dislike(self):
+        dislike_btn = self.driver.find_element_by_xpath('//*[@id="q-2020625691"]/div/div[1]/div/main/div[1]/div/div/div[1]/div[1]/div/div[4]/div/div[2]/button')
+        dislike_btn.click()
+
+
+    def close_popup(self):
+        home_popup = bot.driver.find_element_by_xpath('//*[@id="q545960529"]/div/div/div[2]/button[2]')
+        home_popup.click()
+
+        
+    def close_match(self):
         pass
+
+    def auto_swipe(self):
+        time.sleep(5)
+        while True:
+            time.sleep(0.5)
+            try:
+                self.like()
+            except Exception:
+                try:
+                    self.close_popup()
+                except Exception:
+                    self.close_match()
 
 
 bot = TinderBot()
 bot.login()
+bot.auto_swipe()
 
